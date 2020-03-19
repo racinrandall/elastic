@@ -3,13 +3,12 @@
   yum:
     name: "{{ elastic_rpm }}"
     state: latest
-  when: install_elastic
 
 - name: Install Kibana RPM
   yum:
     name: "{{ kibana_rpm }}"
     state: latest
-  when: install_kibana
+  when: ansbile_hostname in kibana_nodes
 
 - name: Copy elasticsearch.yml template
   template:
