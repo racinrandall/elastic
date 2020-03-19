@@ -1,10 +1,10 @@
 ---
 - name: elastic_service_restart
-  servie:
+  service:
     name: "{{ elastic_service }}"
     state: reload
 
 - name: kibana_service_restart
-  servie:
+  service:
     name: "{{ kibana_service }}"
     state: reload
