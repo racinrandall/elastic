@@ -1,2 +1,7 @@
 ---
-# defaults file for elastic
+elastic_rpm: elasticsearch
+kibana_rpm: kibana
+elastic_service: elasticsearch
+kibana_service: kibana
+install_elastic: true
+install_kibana: false

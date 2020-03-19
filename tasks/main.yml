@@ -1,2 +1,12 @@
 ---
-# tasks file for elastic
+- name: Install Elastic RPM
+  yum:
+    package: "{{ elastic_rpm }}"
+    state: latest
+  when: install_elastic
+
+- name: Install Kibana RPM
+  yum:
+    package: "{{ kibana_rpm }}"
+    state: latest
+  when: install_kibana
