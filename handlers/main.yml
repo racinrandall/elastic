@@ -1,2 +1,10 @@
 ---
-# handlers file for elastic
+- name: elastic_service_restart
+  servie:
+    name: "{{ elastic_service }}"
+    state: reload
+
+- name: kibana_service_restart
+  servie:
+    name: "{{ kibana_service }}"
+    state: reload

@@ -3,12 +3,14 @@
   yum:
     name: "{{ elastic_rpm }}"
     state: latest
+  notify: elastic_service
 
 - name: Install Kibana RPM
   yum:
     name: "{{ kibana_rpm }}"
     state: latest
   when: ansible_hostname in kibana_nodes
+  notify: kibana_service
 
 - name: Copy elasticsearch.yml template
   template:
@@ -17,6 +19,7 @@
     owner: root
     group: elasticsearch
     mode: 0660
+  notify: elastic_service
 
 - name: Copy Elastic Firewall Service
   template:
@@ -25,3 +28,29 @@
     owner: root
     group: root
     mode: 0644
+
+- name: Copy Kibana Firewall Service
+  template:
+    src: kibana.xml.j2
+    dest: /etc/firewalld/services/kibana.xml
+    owner: root
+    group: root
+    mode: 0644
+  when: ansible_hostname in kibana_nodes
+
+- name: Reload Firewall to register new services
+  shell: firewall-cmd --reload
+
+- name: Open firewall for ElasticSearch
+  firewalld:
+    service: elastic
+    state: enabled
+    permanent: yes
+
+- name: Open firewall for Kibana
+  firewalld:
+    service: kibana
+    state: enabled
+    permanent: yes
+  when: ansible_hostname in kibana_nodes
+  
