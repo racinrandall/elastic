@@ -46,11 +46,13 @@
     service: elastic
     state: enabled
     permanent: yes
+    immediate: yes
 
 - name: Open firewall for Kibana
   firewalld:
     service: kibana
     state: enabled
     permanent: yes
+    immediate: yes
   when: ansible_hostname in kibana_nodes
   
