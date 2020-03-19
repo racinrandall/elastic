@@ -87,25 +87,25 @@ cluster.initial_master_nodes: {{ master_nodes|to_yaml }}
 #
 #action.destructive_requires_name: true
 
-{% if is_master == true %}
+{% if ansible_hostname in master_nodes %}
 node.master: true
 {% else %}
 node.master: false
 {% endif %}
 
-{% if is_data == true %}
+{% if ansible_hostname in data_nodes %}
 node.data: true
 {% else %}
 node.data: false
 {% endif %}
 
-{% if is_ingest == true %}
+{% if ansible_hostname in ingest_nodes %}
 node.ingest: true
 {% else %}
 node.ingest: false
 {% endif %}
 
-{% if is_ml == true %}
+{% if ansible_hostname in ml_nodes %}
 node.ml: true
 {% else %}
 node.ml: false

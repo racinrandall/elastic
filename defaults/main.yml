@@ -8,6 +8,11 @@ install_kibana: false
 cluster_name: randalllabs
 master_nodes:
   - master1
+data_nodes:
+  - data1
+ingest_nodes:
+  - master1
+ml_nodes: none
 is_master: false
 is_data: false
 is_ingest: false
