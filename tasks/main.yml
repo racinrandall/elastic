@@ -1,12 +1,12 @@
 ---
 - name: Install Elastic RPM
   yum:
-    package: "{{ elastic_rpm }}"
+    name: "{{ elastic_rpm }}"
     state: latest
   when: install_elastic
 
 - name: Install Kibana RPM
   yum:
-    package: "{{ kibana_rpm }}"
+    name: "{{ kibana_rpm }}"
     state: latest
   when: install_kibana
