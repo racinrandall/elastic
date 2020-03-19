@@ -18,3 +18,11 @@
     owner: root
     group: elasticsearch
     mode: 0660
+
+- name: Copy Elastic Firewall Service
+  template:
+    src: elastic.xml.j2
+    dest: /etc/firewalld/services/elastic.xml
+    owner: root
+    group: root
+    mode: 0644
