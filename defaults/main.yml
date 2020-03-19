@@ -5,3 +5,10 @@ elastic_service: elasticsearch
 kibana_service: kibana
 install_elastic: true
 install_kibana: false
+cluster_name: randalllabs
+master_nodes:
+  - master1
+is_master: false
+is_data: false
+is_ingest: false
+is_ml: false
