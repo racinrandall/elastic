@@ -56,3 +56,13 @@
     immediate: yes
   when: ansible_hostname in kibana_nodes
   
+- name: Copy JVM.Options template
+  template:
+    src: jvm.options.j2
+    dest: /etc/elasticsearch/jvm.options
+    owner: root
+    group: elasticsearch
+    mode: 0660
+  when: ansible_hostname in kibana_nodes && ansible_hostname in master_nodes
+
+
