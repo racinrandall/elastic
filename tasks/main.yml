@@ -26,7 +26,7 @@
     src: kibana.yml.j2
     dest: /etc/kibana/kibana.yml
     owner: root
-    group: elasticsearch
+    group: kibana
     mode: 0660
   when: ansible_hostname in kibana_nodes
   notify: kibana_service_restart
