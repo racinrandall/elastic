@@ -67,11 +67,11 @@
 
 - name: Enable ElasticSearch Service
   service: "{{ elastic_service }}"
-  state: started
-  enabled: yes
+    state: started
+    enabled: yes
 
 - name: Enable Kibana Service
   service: "{{ kibana_service }}"
-  state: started
-  enabled: yes
+    state: started
+    enabled: yes
   when: ansible_hostname in kibana_nodes
