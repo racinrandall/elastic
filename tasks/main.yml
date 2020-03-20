@@ -63,6 +63,6 @@
     owner: root
     group: elasticsearch
     mode: 0660
-  when: ansible_hostname in kibana_nodes & ansible_hostname in master_nodes
+  when: ansible_hostname in kibana_nodes and ansible_hostname in master_nodes
 
 
