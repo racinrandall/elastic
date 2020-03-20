@@ -74,7 +74,7 @@
     mode: 0750
 
 - name: Copy Cert file to hosts
-  file:
+  copy:
     src: randalllabs
     dest: /etc/elasticsearch/certs/randalllabs
     owner: root
