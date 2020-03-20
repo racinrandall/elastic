@@ -18,5 +18,5 @@ is_data: false
 is_ingest: false
 is_ml: false
 elastic_port: 9200
-kibana_port: 5901
+kibana_port: 5601
 heap_size: 1g
