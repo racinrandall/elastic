@@ -65,6 +65,22 @@
     mode: 0660
   when: ansible_hostname in kibana_nodes and ansible_hostname in master_nodes
 
+- name: Create certs folder
+  file:
+    path: /etc/elasticsearch/certs
+    state: directory
+    owner: root
+    group: elasticsearch
+    mode: 0750
+
+- name: Copy Cert file to hosts
+  file:
+    src: randalllabs
+    dest: /etc/elasticsearch/certs/randalllabs
+    owner: root
+    group: elasticsearch
+    mode: 0640
+
 - name: Enable ElasticSearch Service
   service: 
     name: "{{ elastic_service }}"
