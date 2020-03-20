@@ -21,6 +21,16 @@
     mode: 0660
   notify: elastic_service_restart
 
+- name: Copy kibana.yml template
+  template:
+    src: kibana.yml.j2
+    dest: /etc/kibana/kibana.yml
+    owner: root
+    group: elasticsearch
+    mode: 0660
+  when: ansible_hostname in kibana_nodes
+  notify: kibana_service_restart
+
 - name: Copy Elastic Firewall Service
   template:
     src: elastic.xml.j2
