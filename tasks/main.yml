@@ -74,4 +74,4 @@
   service: "{{ kibana_service }}"
   state: started
   enabled: yes
-when: ansible_hostname in kibana_nodes
+  when: ansible_hostname in kibana_nodes
