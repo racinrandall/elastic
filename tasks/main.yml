@@ -3,14 +3,14 @@
   yum:
     name: "{{ elastic_rpm }}"
     state: latest
-  notify: elastic_service
+  notify: elastic_service_restart
 
 - name: Install Kibana RPM
   yum:
     name: "{{ kibana_rpm }}"
     state: latest
   when: ansible_hostname in kibana_nodes
-  notify: kibana_service
+  notify: kibana_service_restart
 
 - name: Copy elasticsearch.yml template
   template:
@@ -19,7 +19,7 @@
     owner: root
     group: elasticsearch
     mode: 0660
-  notify: elastic_service
+  notify: elastic_service_restart
 
 - name: Copy Elastic Firewall Service
   template:
