@@ -2,9 +2,11 @@
 - name: elastic_service_restart
   service:
     name: "{{ elastic_service }}"
-    state: reload
+    state: restarted
+    enabled: yes
 
 - name: kibana_service_restart
   service:
     name: "{{ kibana_service }}"
-    state: reload
+    state: restarted
+    enabled: yes
