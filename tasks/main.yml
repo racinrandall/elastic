@@ -65,4 +65,13 @@
     mode: 0660
   when: ansible_hostname in kibana_nodes and ansible_hostname in master_nodes
 
+- name: Enable ElasticSearch Service
+  service: "{{ elastic_service }}"
+  state: started
+  enabled: yes
 
+- name: Enable Kibana Service
+  service: "{{ kibana_service }}"
+  state: started
+  enabled: yes
+when: ansible_hostname in kibana_nodes
